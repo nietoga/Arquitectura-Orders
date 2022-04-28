@@ -1,14 +1,14 @@
 import './App.css';
 
 import { RestfulProvider } from 'restful-react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import OrderShowPage from './components/OrderShowPage';
-import OrderListPage from './components/OrderListPage';
+import OrderShowPage from '../OrderShowPage';
+import OrderListPage from '../OrderListPage';
 
 function App() {
     return (
-        <RestfulProvider base="https://evergreen-dis.herokuapp.com/api">
+        <RestfulProvider base={process.env.REACT_APP_BACKEND_API_URL}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Navigate to="/orders" />} replace />
