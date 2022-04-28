@@ -1,5 +1,3 @@
-import './App.css';
-
 import { RestfulProvider } from 'restful-react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
