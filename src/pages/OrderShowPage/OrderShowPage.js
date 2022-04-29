@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import Order from '../Order';
+import Order from '../../components/Order';
 
 const OrderShowPage = (props) => {
     const params = useParams();

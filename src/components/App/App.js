@@ -1,8 +1,8 @@
 import { RestfulProvider } from 'restful-react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import OrderShowPage from '../OrderShowPage';
-import OrderListPage from '../OrderListPage';
+import OrderShowPage from '../../pages/OrderShowPage';
+import OrderListPage from '../../pages/OrderListPage';
 
 function App() {
     return (
