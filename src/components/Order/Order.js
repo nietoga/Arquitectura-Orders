@@ -8,7 +8,6 @@ const Order = (props) => {
         data: orderData,
         loading: orderLoading,
         error: orderError,
-        response: orderResponse,
     } = useGet({ path: `order/show/${id}` });
 
     if (orderLoading) {
