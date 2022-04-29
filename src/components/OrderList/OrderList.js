@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
 import { useGet } from 'restful-react';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Link } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
@@ -18,8 +17,7 @@ const columns = [
         valueGetter: (params) => params.id,
         renderCell: (params) => {
             const id = params.value;
-            const show = <Link to={'/order/' + id}>View</Link>;
-            return show;
+            return <Link href={`/order/${id}`}>View</Link>;
         },
     },
 ];

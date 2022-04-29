@@ -9,7 +9,7 @@ const Order = (props) => {
         loading: orderLoading,
         error: orderError,
         response: orderResponse,
-    } = useGet({ path: 'order/show/' + id });
+    } = useGet({ path: `order/show/${id}` });
 
     if (orderLoading) {
         return <CircularProgress />;
