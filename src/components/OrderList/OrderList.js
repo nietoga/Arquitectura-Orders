@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useGet } from 'restful-react';
 import { CircularProgress } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
@@ -7,17 +8,18 @@ const columns = [
     { field: 'status', headerName: 'Status', width: 130 },
     { field: 'totalPrice', headerName: 'Total Price', type: 'number', width: 130 },
     { field: 'address', headerName: 'Address', width: 130 },
-    { field: 'customerName', headerName: 'Customer Email', width: 130 },
-    { field: 'customerEmail', headerName: 'Customer Email', width: 130 },
+    { field: 'customerName', headerName: 'Customer Name', width: 130 },
+    { field: 'customerEmail', headerName: 'Customer Email', width: 160 },
     {
         field: 'actions',
         headerName: 'Actions',
         sortable: false,
-        width: 160,
+        width: 100,
         valueGetter: (params) => params.id,
         renderCell: (params) => {
-            // TODO: Add actions
-            return <div>{params.value}</div>;
+            const id = params.value;
+            const show = <Link to={'/order/' + id}>View</Link>;
+            return show;
         },
     },
 ];
@@ -44,7 +46,7 @@ const OrderList = () => {
     const rows = ordersData.orders.map(orderToRow);
 
     return (
-        <div style={{ height: 400 }}>
+        <div style={{ height: 1000 }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
