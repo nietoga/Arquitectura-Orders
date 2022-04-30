@@ -1,6 +1,6 @@
-import { useGet } from 'restful-react';
 import { CircularProgress, Link } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import { useGet } from 'restful-react';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -44,15 +44,13 @@ const OrderList = () => {
     const rows = ordersData.orders.map(orderToRow);
 
     return (
-        <div style={{ height: 1000 }}>
-            <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
-                checkboxSelection
-            />
-        </div>
+        <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+        />
     );
 };
 
