@@ -1,7 +1,7 @@
 import { Button, CircularProgress, TextField } from '@mui/material';
 import { useFormik } from 'formik';
-import { useCallback, useEffect } from 'react';
-import { useGet } from 'restful-react';
+import { useCallback, useEffect, useRef } from 'react';
+import { useGet, useMutate } from 'restful-react';
 import * as yup from 'yup';
 
 const validationSchema = yup.object({
@@ -17,21 +17,35 @@ const validationSchema = yup.object({
         .required('Customer email is required'),
 });
 
+const filterValues = (values) => {
+    if (values) {
+        return {
+            status: values.status,
+            totalPrice: values.totalPrice,
+            address: values.address,
+            product: values.product,
+            customerName: values.customerName,
+            customerEmail: values.customerEmail,
+        };
+    }
+
+    return {};
+};
+
 const Order = (props) => {
     const { id } = props;
+    const values = useRef();
 
-    const handleSubmit = useCallback(
-        (values) => {
-            if (id) {
-                alert('editing');
-            } else {
-                alert('new');
-            }
+    const { mutate: orderEditMutation } = useMutate({
+        verb: 'PUT',
+        path: `order/update/${id}`,
+    });
 
-            alert(JSON.stringify(values, null, 2));
-        },
-        [id]
-    );
+    const handleSubmit = useCallback(() => {
+        orderEditMutation(filterValues(values.current)).then(() => {
+            alert('All OK!');
+        });
+    }, [id]);
 
     const formik = useFormik({
         initialValues: {
@@ -45,6 +59,8 @@ const Order = (props) => {
         validationSchema: validationSchema,
         onSubmit: handleSubmit,
     });
+
+    values.current = formik.values;
 
     const {
         data: orderData,
