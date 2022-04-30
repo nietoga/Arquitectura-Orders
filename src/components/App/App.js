@@ -31,7 +31,7 @@ function App() {
             <ThemeProvider theme={theme}>
                 <BrowserRouter>
                     <div>
-                        <h1>DIS</h1>
+                        <h1>DIS - 1</h1>
                         <Routes>
                             <Route path="/" element={<Navigate to="/orders" />} replace />
                             <Route path="/order/:id" element={<OrderShowPage />} />
