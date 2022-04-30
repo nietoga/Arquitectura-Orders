@@ -1,3 +1,4 @@
+import DeleteOrderButton from '../DeleteOrderButton';
 import { CircularProgress, Link } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useGet } from 'restful-react';
@@ -17,7 +18,11 @@ const columns = [
         valueGetter: (params) => params.id,
         renderCell: (params) => {
             const id = params.value;
-            return <Link href={`/order/${id}`}>View</Link>;
+            return (
+                <>
+                    <Link href={`/order/${id}`}>View</Link>|<DeleteOrderButton id={id} />
+                </>
+            );
         },
     },
 ];
