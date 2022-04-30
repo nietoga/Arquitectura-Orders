@@ -27,7 +27,7 @@ const theme = createTheme({
 
 function App() {
     return (
-        <RestfulProvider base={process.env.REACT_APP_BACKEND_API_URL}>
+        <RestfulProvider base="https://evergreen-dis.herokuapp.com/api">
             <ThemeProvider theme={theme}>
                 <BrowserRouter>
                     <div>
