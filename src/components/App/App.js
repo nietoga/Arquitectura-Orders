@@ -1,11 +1,9 @@
-import { forwardRef } from 'react';
-
-import { RestfulProvider } from 'restful-react';
-import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
-import { createTheme, ThemeProvider } from '@mui/material';
-
-import OrderShowPage from '../../pages/OrderShowPage';
 import OrderListPage from '../../pages/OrderListPage';
+import OrderShowPage from '../../pages/OrderShowPage';
+import { createTheme, ThemeProvider } from '@mui/material';
+import { forwardRef } from 'react';
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
+import { RestfulProvider } from 'restful-react';
 
 const LinkBehavior = forwardRef((props, ref) => {
     const { href, ...other } = props;
@@ -32,12 +30,15 @@ function App() {
         <RestfulProvider base={process.env.REACT_APP_BACKEND_API_URL}>
             <ThemeProvider theme={theme}>
                 <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Navigate to="/orders" />} replace />
-                        <Route path="/order/:id" element={<OrderShowPage />} />
-                        <Route path="/orders" element={<OrderListPage />} />
-                        <Route path="*" element={<Navigate to="/" replace />} />
-                    </Routes>
+                    <div>
+                        <h1>DIS</h1>
+                        <Routes>
+                            <Route path="/" element={<Navigate to="/orders" />} replace />
+                            <Route path="/order/:id" element={<OrderShowPage />} />
+                            <Route path="/orders" element={<OrderListPage />} />
+                            <Route path="*" element={<Navigate to="/" replace />} />
+                        </Routes>
+                    </div>
                 </BrowserRouter>
             </ThemeProvider>
         </RestfulProvider>
