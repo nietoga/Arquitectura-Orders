@@ -1,7 +1,7 @@
 import OrderListPage from '../../pages/OrderListPage';
 import OrderShowPage from '../../pages/OrderShowPage';
 import Header from '../Header';
-import { createTheme, ThemeProvider } from '@mui/material';
+import { Container, createTheme, ThemeProvider } from '@mui/material';
 import { forwardRef } from 'react';
 import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 import { RestfulProvider } from 'restful-react';
@@ -32,12 +32,14 @@ function App() {
             <ThemeProvider theme={theme}>
                 <BrowserRouter>
                     <Header />
-                    <Routes>
-                        <Route path="/" element={<Navigate to="/orders" />} replace />
-                        <Route path="/order/:id" element={<OrderShowPage />} />
-                        <Route path="/orders" element={<OrderListPage />} />
-                        <Route path="*" element={<Navigate to="/" replace />} />
-                    </Routes>
+                    <Container component="main" maxWidth="xl" sx={{ mb: 2, mt: 2 }}>
+                        <Routes>
+                            <Route path="/" element={<Navigate to="/orders" />} replace />
+                            <Route path="/order/:id" element={<OrderShowPage />} />
+                            <Route path="/orders" element={<OrderListPage />} />
+                            <Route path="*" element={<Navigate to="/" replace />} />
+                        </Routes>
+                    </Container>
                 </BrowserRouter>
             </ThemeProvider>
         </RestfulProvider>

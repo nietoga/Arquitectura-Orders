@@ -1,6 +1,6 @@
 import logo from '../../logo.png';
-import { AppBar, createStyles, IconButton, Toolbar, Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import { createStyles, makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) =>
     createStyles({
